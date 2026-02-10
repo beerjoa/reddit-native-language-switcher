@@ -27,6 +27,11 @@ out/
 *.zip
 *.crx
 *.xpi
+extension.zip
+
+# Extension Keys (Important!)
+*.pem
+key.pem
 
 # Local environment
 .env
@@ -34,3 +39,9 @@ out/
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Web Store Assets (Optional)
+store_assets/
+promotional_images/
+
+*.py

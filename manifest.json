@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Reddit Translate",
+  "name": "Native Language Switcher for Reddit",
   "version": "1.0.0",
-  "description": "Automatically append translation parameter to Reddit URLs.",
+  "description": "Automatically switches to the official translated version of Reddit posts if available.",
   "permissions": ["storage"],
   "host_permissions": ["*://*.reddit.com/*"],
   "action": {
@@ -20,7 +20,7 @@
     {
       "matches": ["*://*.reddit.com/*"],
       "js": ["content-scripts/content.js"],
-      "run_at": "document_idle"
+      "run_at": "document_start"
     }
   ],
   "icons": {
