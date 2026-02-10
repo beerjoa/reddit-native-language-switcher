@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Native Language Switcher for Reddit",
-  "version": "1.0.0",
+  "version": "0.5.0",
   "description": "Automatically switches to the official translated version of Reddit posts if available.",
   "permissions": ["storage"],
   "host_permissions": ["*://*.reddit.com/*"],
