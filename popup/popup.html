@@ -1,44 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sleek Extension</title>
     <link rel="stylesheet" href="popup.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <div class="container">
-      <header>
-        <img src="../icons/icon48.png" alt="Logo" class="logo" />
-        <h1>Sleek Extension</h1>
-      </header>
-
-      <main>
-        <div class="card">
-          <p class="status-text">
-            Status: <span id="status" class="active">Active</span>
-          </p>
-          <button id="action-btn" class="primary-btn">Trigger Action</button>
-        </div>
-
-        <div class="settings">
-          <label class="switch-label">
-            <span>Enable Features</span>
-            <input type="checkbox" id="feature-toggle" checked />
-            <span class="slider"></span>
-          </label>
-        </div>
-      </main>
-
-      <footer>
-        <p>&copy; 2026 Premium Boilerplate</p>
-      </footer>
+      <h2>Reddit Translate Settings</h2>
+      <div class="form-group">
+        <label for="language">Target Language:</label>
+        <select id="language">
+          <option value="ko">Korean (한국어)</option>
+          <option value="en">English (English)</option>
+          <option value="es">Spanish (Español)</option>
+          <option value="ja">Japanese (日本語)</option>
+          <option value="fr">French (Français)</option>
+          <option value="de">German (Deutsch)</option>
+        </select>
+      </div>
+      <div id="status" class="status"></div>
     </div>
     <script src="popup.js"></script>
   </body>

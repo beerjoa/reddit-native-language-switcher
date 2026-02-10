@@ -1,35 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const actionBtn = document.getElementById("action-btn");
-  const statusSpan = document.getElementById("status");
-  const featureToggle = document.getElementById("feature-toggle");
+  const languageSelect = document.getElementById("language");
+  const statusDiv = document.getElementById("status");
 
-  // Load saved settings
-  chrome.storage.local.get(["featureEnabled"], (result) => {
-    if (result.featureEnabled !== undefined) {
-      featureToggle.checked = result.featureEnabled;
+  // Load saved setting
+  chrome.storage.sync.get(["targetLang"], (result) => {
+    if (result.targetLang) {
+      languageSelect.value = result.targetLang;
+    } else {
+      // Default to 'ko' if not set
+      languageSelect.value = "ko";
     }
   });
 
-  actionBtn.addEventListener("click", () => {
-    // Add micro-animation feedback
-    actionBtn.textContent = "Triggered!";
-    setTimeout(() => {
-      actionBtn.textContent = "Trigger Action";
-    }, 1500);
-
-    // Send message to background script
-    chrome.runtime.sendMessage({ action: "PING" }, (response) => {
-      console.log("Response from background:", response);
-      if (response && response.status === "PONG") {
-        statusSpan.classList.add("active");
-      }
-    });
-  });
-
-  featureToggle.addEventListener("change", () => {
-    const isEnabled = featureToggle.checked;
-    chrome.storage.local.set({ featureEnabled: isEnabled }, () => {
-      console.log("Feature state saved:", isEnabled);
+  // Save setting on change
+  languageSelect.addEventListener("change", () => {
+    const targetLang = languageSelect.value;
+    chrome.storage.sync.set({ targetLang: targetLang }, () => {
+      // Visual feedback
+      statusDiv.textContent = "Saved!";
+      setTimeout(() => {
+        statusDiv.textContent = "";
+      }, 1500);
     });
   });
 });

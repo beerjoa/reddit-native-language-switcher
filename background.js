@@ -1,13 +1,12 @@
-// Background service worker for Sleek Extension Boilerplate
+// Background Service Worker
+// Currently minimal as most logic is in Content Script and Popup.
 
 chrome.runtime.onInstalled.addListener(() => {
-  console.log("Sleek Extension Boilerplate installed.");
-});
-
-// Example of handling messages from popup or content scripts
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === "PING") {
-    sendResponse({ status: "PONG" });
-  }
-  return true;
+  // Set default language execution on install if not set
+  chrome.storage.sync.get(["targetLang"], (result) => {
+    if (!result.targetLang) {
+      chrome.storage.sync.set({ targetLang: "ko" });
+      console.log("Default language set to Korean (ko)");
+    }
+  });
 });

@@ -1,8 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Sleek Extension Boilerplate",
+  "name": "Reddit Translate",
   "version": "1.0.0",
-  "description": "A modern, premium browser extension boilerplate.",
+  "description": "Automatically append translation parameter to Reddit URLs.",
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.reddit.com/*"],
   "action": {
     "default_popup": "popup/popup.html",
     "default_icon": {
@@ -16,11 +18,11 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content-scripts/content.js"]
+      "matches": ["*://*.reddit.com/*"],
+      "js": ["content-scripts/content.js"],
+      "run_at": "document_idle"
     }
   ],
-  "permissions": ["storage", "activeTab"],
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
