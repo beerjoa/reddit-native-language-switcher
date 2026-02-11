@@ -7,6 +7,13 @@
     RATE_LIMIT_DURATION: 10000, // 10 seconds
     FOUC_TIMEOUT: 2500, // Safety timeout for hiding page
     CHECK_INTERVAL: 1000, // SPA URL checking interval
+    DEBUG: false, // Set to true for development logs
+  };
+
+  const logger = {
+    log: (...args) =>
+      CONFIG.DEBUG && console.log("[Reddit Translate]", ...args),
+    error: (...args) => console.error("[Reddit Translate]", ...args),
   };
 
   // --- Runtime State ---
@@ -29,9 +36,7 @@
         if (timestamp) {
           const timeDiff = Date.now() - parseInt(timestamp, 10);
           if (timeDiff < CONFIG.RATE_LIMIT_DURATION) {
-            console.log(
-              `[Reddit Translate] Rate limited: ${url} (${timeDiff}ms ago)`,
-            );
+            logger.log(`Rate limited: ${url} (${timeDiff}ms ago)`);
             return true;
           }
         }
@@ -46,7 +51,7 @@
         const key = this.getKey(url);
         sessionStorage.setItem(key, Date.now().toString());
       } catch (e) {
-        console.error("SessionStorage error", e);
+        logger.error("SessionStorage error", e);
       }
     },
   };
@@ -118,9 +123,7 @@
       const translatedUrl = new URL(url);
       translatedUrl.searchParams.set("tl", state.targetLang);
 
-      console.log(
-        `[Reddit Translate] Checking availability: ${translatedUrl.toString()}`,
-      );
+      logger.log(`Checking availability: ${translatedUrl.toString()}`);
 
       try {
         const response = await fetch(translatedUrl.toString(), {
@@ -128,10 +131,10 @@
           redirect: "manual",
         });
 
-        console.log(`[Reddit Translate] Status: ${response.status}`);
+        logger.log(`Status: ${response.status}`);
 
         if (response.status === 200) {
-          console.log(`[Reddit Translate] Translation found. Redirecting...`);
+          logger.log(`Translation found. Redirecting...`);
           RateLimiter.setLimit(url);
 
           if (location.href === url) {
@@ -140,8 +143,8 @@
             location.assign(translatedUrl.toString());
           }
         } else {
-          console.log(
-            `[Reddit Translate] No translation (Status: ${response.status}). Staying on original.`,
+          logger.log(
+            `No translation (Status: ${response.status}). Staying on original.`,
           );
           if (isInitialLoad) {
             this.showContent();
@@ -150,7 +153,7 @@
           }
         }
       } catch (error) {
-        console.error("[Reddit Translate] Error checking translation:", error);
+        logger.error("Error checking translation:", error);
         if (isInitialLoad) {
           this.showContent();
         } else if (location.href !== url) {
@@ -164,17 +167,11 @@
     handleStateChange(changes) {
       if (changes.targetLang) {
         state.targetLang = changes.targetLang.newValue;
-        console.log(
-          "[Reddit Translate] Language updated to:",
-          state.targetLang,
-        );
+        logger.log("Language updated to:", state.targetLang);
       }
       if (changes.isEnabled) {
         state.isEnabled = changes.isEnabled.newValue;
-        console.log(
-          "[Reddit Translate] Enabled state updated to:",
-          state.isEnabled,
-        );
+        logger.log("Enabled state updated to:", state.isEnabled);
       }
 
       const currentUrl = new URL(location.href);
@@ -187,7 +184,7 @@
         this.showContent();
         if (currentUrl.searchParams.has("tl")) {
           currentUrl.searchParams.delete("tl");
-          console.log("[Reddit Translate] disabled. Removing translation...");
+          logger.log("disabled. Removing translation...");
           location.assign(currentUrl.toString());
         }
         return;
@@ -198,9 +195,7 @@
         const currentTl = currentUrl.searchParams.get("tl");
         if (currentTl !== state.targetLang) {
           currentUrl.searchParams.set("tl", state.targetLang);
-          console.log(
-            "[Reddit Translate] Language changed. Updating translation...",
-          );
+          logger.log("Language changed. Updating translation...");
           location.assign(currentUrl.toString());
         }
       } else {
@@ -258,7 +253,7 @@
   setInterval(() => {
     if (location.href !== state.lastUrl) {
       state.lastUrl = location.href;
-      console.log("[Reddit Translate] URL changed:", state.lastUrl);
+      logger.log("URL changed:", state.lastUrl);
       PageController.checkAndRedirect(state.lastUrl, false);
     }
   }, CONFIG.CHECK_INTERVAL);
