@@ -14,18 +14,36 @@ If the translation is invalid or missing, it keeps you on the original post.
 
 ## Installation
 
-### Installation via Chrome Web Store (Coming Soon)
+### Installation via Add-on Stores (Coming Soon)
 
-1. Go to the [Chrome Web Store](https://chrome.google.com/webstore).
-2. Search for "Native Language Switcher for Reddit".
-3. Click "Add to Chrome".
+- **Chrome**: Go to the Chrome Web Store and search for "Native Language Switcher for Reddit".
+- **Firefox**: Go to Firefox Add-ons and search for "Native Language Switcher for Reddit".
 
 ### Manual Installation (Developer Mode)
+
+#### Chrome
 
 1. Download or clone this repository.
 2. Open Chrome and navigate to `chrome://extensions/`.
 3. Enable "Developer mode" in the top right corner.
 4. Click "Load unpacked" and select the extension directory.
+
+#### Firefox
+
+1. Download or clone this repository.
+2. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`.
+3. Click "Load Temporary Add-on...".
+4. Select the `manifest.json` file in the extension directory.
+
+## Packaging for Release
+
+To build the deployment ZIP files for both Chrome and Firefox, run the package script:
+
+```bash
+bash package.sh
+```
+
+This will automatically handle the Manifest V3 differences between Chrome and Firefox and place the `.zip` files in the `dist/` directory.
 
 ## Contributing
 
