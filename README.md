@@ -1,54 +1,60 @@
-# Native Language Switcher for Reddit
+# Reddit Native Language Switcher
 
-Automatically switches to the official translated version of Reddit posts if available.
+Automatically switches Reddit posts to your preferred native language if an official translation is available.
 
-This extension detects when a Reddit post has a native translation available (e.g. ko, ja, es) and seamlessly redirects you to the translated version.
-If the translation is invalid or missing, it keeps you on the original post.
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/ldppbbjabggkjmbjdckahjmcecagimmc.svg)](https://chromewebstore.google.com/detail/ldppbbjabggkjmbjdckahjmcecagimmc?utm_source=item-share-cb)
+[![Firefox Add-ons](https://img.shields.io/amo/v/reddit-native-lang-switcher.svg)](https://addons.mozilla.org/en-US/firefox/addon/reddit-native-lang-switcher/)
 
-## Features
+This extension detects when a Reddit post has a native translation available (e.g., `ko`, `ja`, `es`, `pt`, `fr`, `de`, `it`, `nl`, `sv`) and seamlessly redirects you to the translated version. If the translation is unavailable or invalid, it gracefully keeps you on the original post.
 
-- **Automatic Detection**: Checks for available translations before loading the page.
-- **Fail-safe Logic**: If translation is unavailable or broken (301 redirect), it automatically reverts to the original post without loops.
-- **Toggle Support**: Easily enable/disable the feature via the popup menu.
-- **Instant Language Switching**: Changing the target language instantly updates the current page.
+## ✨ Features
 
-## Installation
+- **Automatic Detection**: Instantly checks for available translations when you open a Reddit post.
+- **Smart Fail-safe Logic**: If a translation is missing or broken (e.g., causes a redirect loop), the extension automatically reverts to the original post.
+- **Easy Toggle**: Quickly enable or disable the extension via the simple popup menu.
+- **Instant Switching**: Changing your preferred target language in the popup instantly applies the new language to your current page.
 
-### Installation via Add-on Stores (Coming Soon)
+## 🚀 Installation
 
-- **Chrome**: Go to the Chrome Web Store and search for "Native Language Switcher for Reddit".
-- **Firefox**: Go to Firefox Add-ons and search for "Native Language Switcher for Reddit".
+### 📥 Install from Official Stores
 
-### Manual Installation (Developer Mode)
+The easiest way to install the extension is through your browser's official add-on store:
 
-#### Chrome
+- [**Download for Chrome**](https://chromewebstore.google.com/detail/ldppbbjabggkjmbjdckahjmcecagimmc?utm_source=item-share-cb)
+- [**Download for Firefox**](https://addons.mozilla.org/en-US/firefox/addon/reddit-native-lang-switcher/)
+
+### 🛠 Manual Installation (Developer Mode)
+
+If you prefer to install manually or want to contribute to the development:
+
+#### Google Chrome / Edge / Brave
 
 1. Download or clone this repository.
 2. Open Chrome and navigate to `chrome://extensions/`.
-3. Enable "Developer mode" in the top right corner.
-4. Click "Load unpacked" and select the extension directory.
+3. Enable **Developer mode** in the top right corner.
+4. Click **Load unpacked** and select the directory containing the extension files.
 
-#### Firefox
+#### Mozilla Firefox
 
 1. Download or clone this repository.
 2. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`.
-3. Click "Load Temporary Add-on...".
-4. Select the `manifest.json` file in the extension directory.
+3. Click **Load Temporary Add-on...**.
+4. Select the `manifest.json` file inside the extension directory.
 
-## Packaging for Release
+## 📦 Packaging for Release
 
-To build the deployment ZIP files for both Chrome and Firefox, run the package script:
+To build the deployment ZIP files for both Chrome and Firefox, run the included build script:
 
 ```bash
 bash package.sh
 ```
 
-This will automatically handle the Manifest V3 differences between Chrome and Firefox and place the `.zip` files in the `dist/` directory.
+This will automatically handle the Manifest V3 and API differences between Chrome and Firefox, and place the fully packaged `.zip` files in the `dist/` directory.
 
-## Contributing
+## 🤝 Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are always welcome! For major changes, please open an issue first to discuss what you would like to change or improve.
 
-## License
+## 📄 License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
