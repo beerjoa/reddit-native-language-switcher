@@ -5,7 +5,7 @@ Automatically switches Reddit posts to your preferred native language if an offi
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/ldppbbjabggkjmbjdckahjmcecagimmc.svg)](https://chromewebstore.google.com/detail/ldppbbjabggkjmbjdckahjmcecagimmc?utm_source=item-share-cb)
 [![Firefox Add-ons](https://img.shields.io/amo/v/reddit-native-lang-switcher.svg)](https://addons.mozilla.org/en-US/firefox/addon/reddit-native-lang-switcher/)
 
-This extension detects when a Reddit post has a native translation available (e.g., `ko`, `ja`, `es`, `pt`, `fr`, `de`, `it`, `nl`, `sv`) and seamlessly redirects you to the translated version. If the translation is unavailable or invalid, it gracefully keeps you on the original post.
+This extension detects when a Reddit post has a native translation available (e.g., `ko`, `ja`, `zh-Hant`, `es`, `pt`, `fr`, `de`, `it`, `nl`, `sv`, `ru`, `th`, `vi`, `hi`, and more) and seamlessly redirects you to the translated version. If the translation is unavailable or invalid, it gracefully keeps you on the original post.
 
 ## ✨ Features
 
@@ -13,6 +13,7 @@ This extension detects when a Reddit post has a native translation available (e.
 - **Smart Fail-safe Logic**: If a translation is missing or broken (e.g., causes a redirect loop), the extension automatically reverts to the original post.
 - **Easy Toggle**: Quickly enable or disable the extension via the simple popup menu.
 - **Instant Switching**: Changing your preferred target language in the popup instantly applies the new language to your current page.
+- **Smart Language Detection**: On first install, automatically detects your browser's language and sets it as the default translation target.
 
 ## 🚀 Installation
 
@@ -54,6 +55,10 @@ This will automatically handle the Manifest V3 and API differences between Chrom
 ## 🤝 Contributing
 
 Pull requests are always welcome! For major changes, please open an issue first to discuss what you would like to change or improve.
+
+## ⚠️ Disclaimer
+
+This is an independent project and is not affiliated with or endorsed by Anthropic or Reddit.
 
 ## 📄 License
 
