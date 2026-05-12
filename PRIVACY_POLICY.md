@@ -1,6 +1,6 @@
 # Privacy Policy for Native Language Switcher for Reddit
 
-**Last Updated: February 11, 2026**
+**Last Updated: May 12, 2026**
 
 Native Language Switcher for Reddit ("we," "us," or "our") respects your privacy. This Privacy Policy explains our practices regarding data collection and usage for this browser extension.
 
@@ -12,6 +12,7 @@ We **do not collect** any personal information, browsing history, or sensitive d
 
 - **User Preferences**: We store your "Target Language" and "Enabled/Disabled" status using the `chrome.storage.sync` API. This data remains on your local browser and is only used to maintain the extension's functionality.
 - **Verification Requests**: When you visit a Reddit post, the extension sends a request to Reddit.com to check if a translation exists. This request is handled directly between your browser and Reddit; we do not sit in the middle of this communication.
+- **Browser Language Detection**: On first install, the extension reads `navigator.language` (a read-only property provided by your browser) to pre-select your default target language. This value is used only locally and is never transmitted to any server.
 
 ## 3. Data Sharing
 

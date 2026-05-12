@@ -1,44 +1,114 @@
-body {
-  width: 250px;
-  padding: 15px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f6f7f8;
-  color: #1c1c1c;
+/* ── DESIGN.md Token Mapping: colors, typography, spacing, radius ── */
+:root {
+  --canvas: #faf9f5;            /* {colors.canvas} */
+  --ink: #141413;               /* {colors.ink} */
+  --body: #3d3d3a;              /* {colors.body} */
+  --muted: #6c6a64;             /* {colors.muted} */
+  --muted-soft: #8e8b82;        /* {colors.muted-soft} */
+  --primary: #cc785c;           /* {colors.primary} */
+  --hairline: #e6dfd8;          /* {colors.hairline} */
+  --radius-md: 8px;             /* {rounded.md} */
+  --spacing-xs: 8px;            /* {spacing.xs} */
+  --spacing-sm: 12px;           /* {spacing.sm} */
+  --spacing-md: 16px;           /* {spacing.md} */
 }
 
+/* ── Base ── */
+body {
+  width: 250px;
+  padding: var(--spacing-md);
+  font-family: "StyreneB", "Inter", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  background-color: var(--canvas);
+  color: var(--body);
+  margin: 0;
+}
+
+/* ── Container ── */
 .container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--spacing-sm);
 }
 
-h2 {
-  margin: 0 0 10px 0;
+/* ── Header ── */
+.title {
+  margin: 0;
   font-size: 16px;
-  color: #ff4500; /* Reddit Orange */
+  font-weight: 500;
+  color: var(--ink);
 }
 
+.subtitle {
+  margin: 2px 0 0 0;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+/* ── Toggle Row ── */
+.toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+/* ── Form Group ── */
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 
-label {
-  font-size: 12px;
-  font-weight: 600;
+.form-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
 }
 
+/* ── Select (matches {component.text-input}) ── */
 select {
-  padding: 5px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--hairline);
+  background-color: var(--canvas);
+  color: var(--ink);
+  font-family: inherit;
   font-size: 14px;
+  font-weight: 400;
+  line-height: 1.55;
+  height: 40px;
+  appearance: none;
+  cursor: pointer;
 }
 
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* ── Status ── */
 .status {
-  font-size: 12px;
-  color: green;
-  height: 15px;
-  margin-top: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--primary);
+  min-height: 16px;
+}
+
+/* ── Footer ── */
+.footer {
+  border-top: 1px solid var(--hairline);
+  padding-top: var(--spacing-xs);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted-soft);
+  line-height: 1.4;
 }
