@@ -1,12 +1,13 @@
 // Background Service Worker
-// Currently minimal as most logic is in Content Script and Popup.
 
 chrome.runtime.onInstalled.addListener(() => {
-  // Set default language execution on install if not set
   chrome.storage.sync.get(["targetLang"], (result) => {
     if (!result.targetLang) {
-      chrome.storage.sync.set({ targetLang: "ko" });
-      console.log("Default language set to Korean (ko)");
+      const fullLang = (navigator.language || "en").toLowerCase();
+      const localeMap = { "zh-tw": "zh-Hant", "zh-hk": "zh-Hant", "zh-hant": "zh-Hant", zh: "zh-Hans", "zh-cn": "zh-Hans", "zh-hans": "zh-Hans" };
+      const best = localeMap[fullLang] || fullLang.split("-")[0];
+      chrome.storage.sync.set({ targetLang: best });
+      console.log("Default language set to", best, "(from browser:", navigator.language, ")");
     }
   });
 });
