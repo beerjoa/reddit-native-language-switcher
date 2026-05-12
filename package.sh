@@ -19,10 +19,12 @@ rm -f "$OUT_DIR/$NAME-firefox-v$VERSION.zip"
 zip -r "$OUT_DIR/$NAME-chrome-v$VERSION.zip" \
     manifest.json \
     background.js \
+    languages.js \
     content-scripts/ \
     popup/ \
     icons/ \
     README.md \
+    CHANGELOG.md \
     LICENCE \
     -x "*.DS_Store*" -x "__MACOSX*"
 
@@ -34,7 +36,7 @@ echo "Generating Firefox-compatible manifest..."
 
 # Create a temporary directory for the Firefox build
 TMP_DIR=$(mktemp -d)
-cp -r background.js content-scripts popup icons README.md LICENCE "$TMP_DIR/"
+cp -r background.js languages.js content-scripts popup icons README.md CHANGELOG.md LICENCE "$TMP_DIR/"
 
 # Transform manifest.json for Firefox using Node.js
 node -e "
@@ -53,10 +55,12 @@ cd "$TMP_DIR" || exit 1
 zip -r "$ORIG_DIR/$OUT_DIR/$NAME-firefox-v$VERSION.zip" \
     manifest.json \
     background.js \
+    languages.js \
     content-scripts/ \
     popup/ \
     icons/ \
     README.md \
+    CHANGELOG.md \
     LICENCE \
     -x "*.DS_Store*" -x "__MACOSX*"
 cd "$ORIG_DIR" || exit 1

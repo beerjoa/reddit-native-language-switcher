@@ -1,0 +1,30 @@
+// Reddit Native Translation — Supported Languages
+// Data file referenced by popup/popup.js for dynamic dropdown rendering.
+// Add new languages here; popup.js reads SUPPORTED_LANGUAGES at runtime.
+const SUPPORTED_LANGUAGES = [
+  { code: "ko",      nativeName: "한국어",          englishName: "Korean" },
+  { code: "en",      nativeName: "English",           englishName: "English" },
+  { code: "ja",      nativeName: "日本語",             englishName: "Japanese" },
+  { code: "zh-Hans", nativeName: "简体中文",          englishName: "Chinese (Simplified)" },
+  { code: "zh-Hant", nativeName: "繁體中文",          englishName: "Chinese (Traditional)" },
+  { code: "es",      nativeName: "Español",            englishName: "Spanish" },
+  { code: "pt",      nativeName: "Português",          englishName: "Portuguese" },
+  { code: "fr",      nativeName: "Français",           englishName: "French" },
+  { code: "de",      nativeName: "Deutsch",            englishName: "German" },
+  { code: "it",      nativeName: "Italiano",           englishName: "Italian" },
+  { code: "nl",      nativeName: "Nederlands",         englishName: "Dutch" },
+  { code: "sv",      nativeName: "Svenska",            englishName: "Swedish" },
+  { code: "da",      nativeName: "Dansk",              englishName: "Danish" },
+  { code: "no",      nativeName: "Norsk",              englishName: "Norwegian" },
+  { code: "fi",      nativeName: "Suomi",              englishName: "Finnish" },
+  { code: "ru",      nativeName: "Русский",            englishName: "Russian" },
+  { code: "el",      nativeName: "Ελληνικά",           englishName: "Greek" },
+  { code: "tr",      nativeName: "Türkçe",             englishName: "Turkish" },
+  { code: "hu",      nativeName: "Magyar",             englishName: "Hungarian" },
+  { code: "ro",      nativeName: "Română",             englishName: "Romanian" },
+  { code: "th",      nativeName: "ไทย",                englishName: "Thai" },
+  { code: "vi",      nativeName: "Tiếng Việt",         englishName: "Vietnamese" },
+  { code: "hi",      nativeName: "हिन्दी",             englishName: "Hindi" },
+  { code: "fil",     nativeName: "Filipino",            englishName: "Filipino" },
+  { code: "ms",      nativeName: "Bahasa Melayu",       englishName: "Malay" },
+];
